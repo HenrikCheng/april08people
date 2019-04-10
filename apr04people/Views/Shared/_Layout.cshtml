@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <h1 style="background-color: grey">ACME</h1>
+    <header style="background-color: lightgray">
+        <a asp-controller="people" asp-action="Index">Main</a>
+        <a asp-controller="people" asp-action="Create">Create Person</a>
+        <a href="~/">Om oss</a>
+        <a href="~/">Hitta</a>
+        <a href="~/">Kontakt</a>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer style="background-color: lightgray">&copy; Acme 2019</footer>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> @RenderSection("scripts", false)
+</body>
+</html>

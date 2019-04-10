@@ -1,0 +1,21 @@
+﻿@model Contact[]
+@{ ViewBag.Title = "Index of People"; }
+
+<h2 style="font-size: 20px">All the people</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @*<form asp-controller="people" asp-action="details">
+                    <input type="submit" value="Details" />
+                </form>*@
+            @*<div class="boxmednamn">*@
+                @*<a href="~/details/@item.Id">*@
+                    @*@item.Name
+                </a>*@
+                <partial name=_DetailBox model=item />
+            @*</div>*@
+        </li>
+    }
+</ul>
+<a href="~/people/create"> Add a person</a>

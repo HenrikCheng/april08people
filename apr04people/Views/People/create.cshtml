@@ -1,0 +1,25 @@
+﻿@model Contact
+@{ ViewBag.Title = "Create People"; }
+
+
+<h2>Create People</h2>
+<form asp-controller="people" asp-action="create" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <input type="submit" name="Submit" />
+</form>
+<a href="~/">Person list</a>
+<partial name="_InfoBox" model="Model" /> <br />
+<partial name="_InfoBox" model="Model" />
+
+
+@section scripts
+{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}
