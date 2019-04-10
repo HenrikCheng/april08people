@@ -1,7 +1,8 @@
-﻿@model Contact[]
+﻿@*@model Contact[]*@
+@model PeopleIndexVM[]
 @{ ViewBag.Title = "Index of People"; }
 
-<h2 style="font-size: 20px">All the people</h2>
+<h2 style="font-size: 20px">All the people (@Model.Length)</h2>
 <ul>
     @foreach (var item in Model)
     {

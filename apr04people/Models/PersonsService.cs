@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apr04people.Models.ViewModels;
+
 
 namespace apr04people.Models
 {
@@ -29,15 +31,32 @@ namespace apr04people.Models
         //    context.SaveChanges();
         //}
 
-        public async Task AddPerson(Contact person)
+        //public async Task AddPerson(Contact person)
+        //{
+        //    context.Contact.Add(person);
+        //    await context.SaveChangesAsync();
+        //}
+
+        internal void AddPerson(PeopleCreateVM person)
         {
-            context.Contact.Add(person);
-            await context.SaveChangesAsync();
+            context.Contact.Add(new Contact
+            {
+                Name = person.Name,
+                Email = person.Email
+            });
+            context.SaveChanges();
         }
 
-        public Contact[] GetAllPeople()
+        public PeopleIndexVM[] GetAllPeople()
         {
-            return context.Contact.ToArray();
+            return context.Contact
+                .OrderByDescending(o => o.Name)
+                .Select(o => new PeopleIndexVM
+                {
+                    Name = o.Name,
+                    ShowAsHighlighted = o.Name.StartsWith("admin")
+                })
+                .ToArray();
         }
 
         public Contact GetPersonById(int id)
